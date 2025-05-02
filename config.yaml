@@ -1,0 +1,30 @@
+preprocessing_config:
+  description: upper boby
+  raw_instance_imgs: /dreambooth/instance_imgs_raw
+  grounding_dino_score_threshold: 0.5
+  instance_img_dir: "./instance_imgs_test"
+
+data_config:
+  num_class_data: 200
+  class_prompt: "a plush animal"
+  special_word: "orii"
+  instance_prompt: "a {special_word} plush animal"
+  sample_generation_batch_size: 1
+  class_img_dir: "./class_imgs"
+  instance_img_dir: "./instance_imgs"
+
+model_config:
+  model_id: "stabilityai/stable-diffusion-3.5-large"
+
+training_config:
+  batch_size: 2
+  lr: 1e-4
+  warmup_steps: 20
+  max_steps: 1000
+  gradient_accumulation_steps: 4
+  prior_loss_weight: 1
+  ckpt_dir: "./output"
+  logging_dir: "./output/logging"
+  upcast_before_saving: False
+  img_size: 768
+  center_crop_res: 768
